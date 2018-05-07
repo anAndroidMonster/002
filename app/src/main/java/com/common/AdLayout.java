@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
 import com.qq.e.ads.cfg.VideoOption;
@@ -49,7 +50,7 @@ public class AdLayout extends RelativeLayout {
         NativeExpressAD nativeExpressAD = new NativeExpressAD(mContext, new ADSize(ADSize.FULL_WIDTH, ADSize.AUTO_HEIGHT), appId, adId, new NativeExpressAD.NativeExpressADListener() {
             @Override
             public void onNoAD(AdError adError) {
-
+                //todo 增加统计
             }
 
             @Override
@@ -80,7 +81,7 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onADClicked(NativeExpressADView nativeExpressADView) {
-
+                ClickHelper.getInstance().setClicked(true);
             }
 
             @Override
@@ -108,5 +109,17 @@ public class AdLayout extends RelativeLayout {
                 .setAutoPlayMuted(true)
                 .build());
         nativeExpressAD.loadAD(1);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if(ev.getAction() == MotionEvent.ACTION_DOWN){
+            if(mAdId.equals(ClickHelper.getInstance().getEnableId())){
+                return super.dispatchTouchEvent(ev);
+            }else{
+                return false;
+            }
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

@@ -3,6 +3,7 @@ package com.msc.activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.common.Constant;
 import com.common.NativeActivity;
 import com.common.ShowActivity;
 import com.example.test.R;
@@ -24,7 +25,7 @@ public class RecipeDetailActivity extends NativeActivity {
 
     @Override
     protected String getNativeId() {
-        return "7030020348049331";
+        return Constant.NATIVE_IDS[1];
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.common;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 /**
@@ -18,7 +20,29 @@ public abstract class NativeActivity extends ShowActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTouch();
         getNative();
+    }
+
+    private void initTouch(){
+        //起点在layout才有效果，所以是外围滑动或者点击
+        mLayContainer.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                    case MotionEvent.ACTION_OUTSIDE:
+                        if(getNativeId().equals(ClickHelper.getInstance().getEnableId())){
+                            //不做跳转
+                        }else {
+                            JumpHelper.doJump(NativeActivity.this);
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     private void getNative(){
