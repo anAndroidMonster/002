@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.test.R;
@@ -24,6 +25,7 @@ import java.util.Date;
 public abstract class ShowActivity extends Activity {
     //view
     private ImageView mIvShow;
+    protected RelativeLayout mLayContainer;
     //data
     private long mClickTime;
 
@@ -41,10 +43,11 @@ public abstract class ShowActivity extends Activity {
 
     private void initView(){
         mIvShow = (ImageView) findViewById(R.id.iv_show);
+        mLayContainer = (RelativeLayout) findViewById(R.id.lay_container);
     }
 
     private void initEvent(){
-        mIvShow.setOnTouchListener(new View.OnTouchListener() {
+        mLayContainer.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){

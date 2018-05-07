@@ -20,31 +20,19 @@ import java.util.List;
 
 public class AdLayout extends RelativeLayout {
     private Context mContext;
-    private int mIndex = -1;
     private NativeExpressADView nativeExpressADView;
+    private String mAdId;
 
-    public AdLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public AdLayout(Context context, String adId) {
+        super(context);
         mContext = context;
-        getInParam();
+        mAdId = adId;
         initData();
     }
 
-    private void getInParam(){
-        String tag = getTag().toString();
-        if(tag != null && tag.length() > 0){
-            try{
-                mIndex = Integer.parseInt(tag);
-            }catch (NumberFormatException ex){
-                ex.printStackTrace();
-            }
-        }
-    }
-
     private void initData(){
-        if(mIndex >= 0 && mIndex < Constant.NATIVE_IDS.length){
-            String adId = Constant.NATIVE_IDS[mIndex];
-            getNativeAd(Constant.APP_ID, adId);
+        if(mAdId != null && mAdId.length() > 0){
+            getNativeAd(Constant.APP_ID, mAdId);
         }
     }
 

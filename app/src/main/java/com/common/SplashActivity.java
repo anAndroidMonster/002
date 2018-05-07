@@ -35,5 +35,6 @@ public class SplashActivity extends Activity {
 
     private void initData(){
         JumpHelper.jumpMain(SplashActivity.this);
+        finish();
     }
 }

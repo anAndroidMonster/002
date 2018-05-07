@@ -46,6 +46,11 @@
         <activity android:name="com.msc.activity.PaiUpLoad" android:screenOrientation="portrait" android:launchMode="singleTask"/>
         <activity android:name="com.msc.activity.PaiuploadChooseType" android:screenOrientation="portrait" android:launchMode="singleTask"/>
         <activity android:name="com.msc.activity.RecipeListCommentActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+        <activity android:name="com.msc.activity.LoginActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+        <activity android:name="com.msc.activity.RecipeDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+        <activity android:name="com.msc.activity.UploadRecipeCreate" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+        <activity android:name="com.msc.activity.RecommentUserListActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+        <activity android:name="com.msc.activity.SearchActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
     </application>
 
 </manifest>
