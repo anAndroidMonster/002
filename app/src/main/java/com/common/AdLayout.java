@@ -12,6 +12,7 @@ import com.qq.e.ads.nativ.ADSize;
 import com.qq.e.ads.nativ.NativeExpressAD;
 import com.qq.e.ads.nativ.NativeExpressADView;
 import com.qq.e.comm.util.AdError;
+import com.tendcloud.tenddata.TCAgent;
 
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class AdLayout extends RelativeLayout {
         NativeExpressAD nativeExpressAD = new NativeExpressAD(mContext, new ADSize(ADSize.FULL_WIDTH, ADSize.AUTO_HEIGHT), appId, adId, new NativeExpressAD.NativeExpressADListener() {
             @Override
             public void onNoAD(AdError adError) {
-                //todo 增加统计
+                TCAgent.onEvent(mContext, "AD_ERROR");
             }
 
             @Override
@@ -76,11 +77,12 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onADExposure(NativeExpressADView nativeExpressADView) {
-
+                TCAgent.onEvent(mContext, "AD_SHOW");
             }
 
             @Override
             public void onADClicked(NativeExpressADView nativeExpressADView) {
+                TCAgent.onEvent(mContext, "AD_CLICK");
                 ClickHelper.getInstance().setClicked(true);
             }
 

@@ -14,6 +14,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initTalkingData();
+        FinishHelper.getInstance().init();
     }
 
     private void initTalkingData(){

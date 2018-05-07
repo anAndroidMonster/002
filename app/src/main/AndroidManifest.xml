@@ -41,6 +41,8 @@
             </intent-filter>
         </service>
 
+        <activity android:name="com.common.FinishActivity" android:screenOrientation="portrait" android:launchMode="singleTask" android:exported="true"/>
+
         <activity android:name="com.msc.activity.MainActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
         <activity android:name="com.msc.activity.PaiDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
         <activity android:name="com.msc.activity.PaiUpLoad" android:screenOrientation="portrait" android:launchMode="singleTask"/>
@@ -51,6 +53,7 @@
         <activity android:name="com.msc.activity.UploadRecipeCreate" android:screenOrientation="portrait" android:launchMode="singleTask"/>
         <activity android:name="com.msc.activity.RecommentUserListActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
         <activity android:name="com.msc.activity.SearchActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
+
     </application>
 
 </manifest>
