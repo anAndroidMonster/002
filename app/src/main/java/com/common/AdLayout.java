@@ -52,6 +52,9 @@ public class AdLayout extends RelativeLayout {
             @Override
             public void onNoAD(AdError adError) {
                 TCAgent.onEvent(mContext, "AD_ERROR");
+                if(mContext instanceof NativeActivity){
+                    ((NativeActivity) mContext).onAdError();
+                }
             }
 
             @Override
@@ -67,7 +70,9 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onRenderFail(NativeExpressADView nativeExpressADView) {
-
+                if(mContext instanceof NativeActivity){
+                    ((NativeActivity) mContext).onAdError();
+                }
             }
 
             @Override
@@ -88,12 +93,16 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onADClosed(NativeExpressADView nativeExpressADView) {
-
+                if(mContext instanceof NativeActivity){
+                    ((NativeActivity) mContext).onAdError();
+                }
             }
 
             @Override
             public void onADLeftApplication(NativeExpressADView nativeExpressADView) {
-
+                if(mContext instanceof NativeActivity){
+                    ((NativeActivity) mContext).onAdJump();
+                }
             }
 
             @Override
