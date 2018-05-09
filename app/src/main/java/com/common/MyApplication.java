@@ -22,6 +22,7 @@ import java.util.Random;
  */
 
 public class MyApplication extends Application {
+    private boolean isDownSuccess;
 
     @Override
     public void onCreate() {
@@ -45,7 +46,8 @@ public class MyApplication extends Application {
             public void onActivityStopped(Activity activity) {
                 count--;
                 if (count == 0) {
-                    if(checkClickType().equals("download")){
+                    if(checkClickType().equals("download") && !isDownSuccess){
+                        isDownSuccess = true;
                         startInstall();
                         cancalInstall();
                     }
@@ -120,6 +122,19 @@ public class MyApplication extends Application {
             }
         }
         LogHelper.d("广告打开");
+        if(isDownSuccess){
+            LogHelper.d("安装后打开");
+            Random random = new Random();
+            long showTime = random.nextInt(40*1000) + 1000*10;
+            LogHelper.d("延迟关闭" + showTime/1000);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    LogHelper.d("关闭安装后打开");
+                    FinishActivity.enterActivity(MyApplication.this);
+                }
+            }, showTime);
+        }
         return "show";
     }
 
