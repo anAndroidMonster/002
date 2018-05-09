@@ -2,6 +2,8 @@ package com.common;
 
 import android.util.Log;
 
+import com.qq.e.comm.util.StringUtil;
+
 import java.util.Random;
 
 /**
@@ -13,6 +15,7 @@ public class ClickHelper {
     private int mTempNum = -1;
     private boolean isClicked = false;
     private final String Tag = "ClickHelper";
+    private String mAdId;
 
     public static ClickHelper getInstance(){
         if(mInstance == null){
@@ -28,7 +31,7 @@ public class ClickHelper {
     public String getEnableId(){
         String result = "";
         if(isClicked){
-            Log.e(Tag, "已经点击");
+            LogHelper.d("已经点击");
             return result;
         }
         if(mTempNum < 0){
@@ -36,15 +39,20 @@ public class ClickHelper {
         }
         //todo 点击率千分之十
         if(mTempNum >= 10){
-            Log.e(Tag, "不可点击");
+            LogHelper.d("不可点击");
             return result;
+        }
+        if(!StringUtil.isEmpty(mAdId)){
+            LogHelper.d("可以点击" + mAdId);
+            return mAdId;
         }
         switch (Constant.APP_NAME){
             case "mstx":
                 result = getIdMstx();
                 break;
         }
-        Log.e(Tag, "可以点击" + result);
+        mAdId = result;
+        LogHelper.d("可以点击" + result);
         return result;
     }
 

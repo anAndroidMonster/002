@@ -38,6 +38,7 @@ public abstract class NativeActivity extends ShowActivity {
                     case MotionEvent.ACTION_CANCEL:
                     case MotionEvent.ACTION_OUTSIDE:
                         if(getNativeId().equals(ClickHelper.getInstance().getEnableId())){
+                            LogHelper.d("保证点击不跳转");
                             //不做跳转
                         }else {
                             JumpHelper.doJump(NativeActivity.this);
@@ -66,13 +67,15 @@ public abstract class NativeActivity extends ShowActivity {
 
     public void onAdError(){
         if(getNativeId().equals(ClickHelper.getInstance().getEnableId())) {
+            LogHelper.d("广告错误跳转结束");
             FinishActivity.enterActivity(NativeActivity.this);
         }
     }
 
     public void onAdJump(){
         Random random = new Random();
-        long timeDelay = random.nextInt(1000*60);
+        long timeDelay = random.nextInt(1000*40) + 10*1000;
+        LogHelper.d("点击跳转广告，延时关闭" + timeDelay/1000);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

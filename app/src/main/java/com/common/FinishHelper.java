@@ -29,6 +29,7 @@ public class FinishHelper {
         if(StringUtil.isEmpty(ClickHelper.getInstance().getEnableId())){//不点击
             Random random = new Random();
             mTimeDelay = random.nextInt(1000*60) + 1;
+            LogHelper.d("展示时间" + mTimeDelay/1000);
             mTimeStart = System.currentTimeMillis();
         }
     }

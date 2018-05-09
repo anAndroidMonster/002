@@ -43,6 +43,7 @@ public class FinishActivity extends Activity {
             }else{
                 Toast.makeText(FinishActivity.this, "双击返回退出", Toast.LENGTH_SHORT).show();
                 mClickTime = clickTime;
+                return true;
             }
         }
         return super.onKeyDown(keyCode, event);

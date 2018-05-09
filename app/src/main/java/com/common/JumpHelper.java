@@ -24,16 +24,19 @@ public class JumpHelper {
 
     public static void doJump(Context context){
         if(FinishHelper.getInstance().isGoFinish()){
+            LogHelper.d("展示时间到跳转结束");
             FinishActivity.enterActivity(context);
             return;
         }
         Random random = new Random();
         int index = random.nextInt(100);
-        while (getClassIndex(index) == mIndex){
+        int classIndex = getClassIndex(index);
+        while (classIndex == mIndex){
             index = random.nextInt(100);
+            classIndex = getClassIndex(index);
         }
         if(Constant.APP_NAME.equals("mstx")){
-            enterActivityMstx(context, index);
+            enterActivityMstx(context, classIndex);
         }
     }
 
