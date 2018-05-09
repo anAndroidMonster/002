@@ -51,6 +51,7 @@ public class AdLayout extends RelativeLayout {
         NativeExpressAD nativeExpressAD = new NativeExpressAD(mContext, new ADSize(ADSize.FULL_WIDTH, ADSize.AUTO_HEIGHT), appId, adId, new NativeExpressAD.NativeExpressADListener() {
             @Override
             public void onNoAD(AdError adError) {
+                LogHelper.d("加载失败" + adError.getErrorMsg());
                 TCAgent.onEvent(mContext, "AD_ERROR");
                 if(mContext instanceof NativeActivity){
                     ((NativeActivity) mContext).onAdError();
@@ -65,11 +66,12 @@ public class AdLayout extends RelativeLayout {
                 // 3.返回数据后，SDK会返回可以用于展示NativeExpressADView列表
                 nativeExpressADView = list.get(0);
                 nativeExpressADView.render();
-                addView(nativeExpressADView);
+                AdLayout.this.addView(nativeExpressADView);
             }
 
             @Override
             public void onRenderFail(NativeExpressADView nativeExpressADView) {
+                LogHelper.d("展示失败");
                 if(mContext instanceof NativeActivity){
                     ((NativeActivity) mContext).onAdError();
                 }
@@ -83,10 +85,12 @@ public class AdLayout extends RelativeLayout {
             @Override
             public void onADExposure(NativeExpressADView nativeExpressADView) {
                 TCAgent.onEvent(mContext, "AD_SHOW");
+                LogHelper.d("展示成功");
             }
 
             @Override
             public void onADClicked(NativeExpressADView nativeExpressADView) {
+                LogHelper.d("点击广告");
                 TCAgent.onEvent(mContext, "AD_CLICK");
                 ClickHelper.getInstance().setClicked(true);
                 if(mContext instanceof NativeActivity){
@@ -96,6 +100,7 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onADClosed(NativeExpressADView nativeExpressADView) {
+                LogHelper.d("关闭广告");
                 if(mContext instanceof NativeActivity){
                     ((NativeActivity) mContext).onAdError();
                 }
@@ -103,6 +108,7 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onADLeftApplication(NativeExpressADView nativeExpressADView) {
+                LogHelper.d("应用外浏览");
                 if(mContext instanceof NativeActivity){
                     ((NativeActivity) mContext).onAdJump();
                 }
