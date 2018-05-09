@@ -39,6 +39,7 @@ public class FinishActivity extends Activity {
                 MessageEvent event1 = new MessageEvent();
                 event1.setEventType(ConstantEvent.EVENT_QUIT);
                 EventBus.getDefault().post(event1);
+                MyApplication.exit();
                 return true;
             }else{
                 Toast.makeText(FinishActivity.this, "双击返回退出", Toast.LENGTH_SHORT).show();

@@ -86,4 +86,15 @@ public abstract class NativeActivity extends ShowActivity {
             }
         }, timeDelay);
     }
+
+    public void onDownloadTimeout(){
+        //下载2分钟，安装1分钟，使用1分钟
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LogHelper.d("广告点击响应超时");
+                FinishActivity.enterActivity(NativeActivity.this);
+            }
+        }, 1000*60*4);
+    }
 }

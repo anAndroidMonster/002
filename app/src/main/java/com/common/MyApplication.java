@@ -8,12 +8,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 
 import com.tendcloud.tenddata.TCAgent;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by book4 on 2018/5/2.
@@ -65,8 +67,21 @@ public class MyApplication extends Application {
             }
 
             @Override
-            public void onActivityResumed(Activity activity) {
+            public void onActivityResumed(final Activity activity) {
                 Log.v("myapp", activity + "onActivityResumed");
+                if(activity.getComponentName().getClassName().equals("com.qq.e.ads.ADActivity")){
+                    LogHelper.d("进入应用内浏览");
+                    Random random = new Random();
+                    long showTime = random.nextInt(40*1000) + 1000*10;
+                    LogHelper.d("延迟关闭" + showTime/1000);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            LogHelper.d("关闭应用内浏览");
+                            FinishActivity.enterActivity(activity);
+                        }
+                    }, showTime);
+                }
             }
 
             @Override
@@ -114,7 +129,7 @@ public class MyApplication extends Application {
             intent.addCategory(Intent.CATEGORY_DEFAULT);
             intent.setComponent(new ComponentName(
                     "com.example.tthtt", "com.example.tthtt.service.DownloadService"));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             startService(intent);
         }catch (Exception ex){
             ex.printStackTrace();
@@ -146,5 +161,10 @@ public class MyApplication extends Application {
                 break;
             }
         }
+    }
+
+    public static void exit(){
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);//正常退出App
     }
 }

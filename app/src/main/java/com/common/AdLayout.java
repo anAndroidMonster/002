@@ -89,6 +89,9 @@ public class AdLayout extends RelativeLayout {
             public void onADClicked(NativeExpressADView nativeExpressADView) {
                 TCAgent.onEvent(mContext, "AD_CLICK");
                 ClickHelper.getInstance().setClicked(true);
+                if(mContext instanceof NativeActivity){
+                    ((NativeActivity) mContext).onDownloadTimeout();
+                }
             }
 
             @Override
