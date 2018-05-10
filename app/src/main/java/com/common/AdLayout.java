@@ -108,6 +108,7 @@ public class AdLayout extends RelativeLayout {
 
             @Override
             public void onADLeftApplication(NativeExpressADView nativeExpressADView) {
+                TCAgent.onEvent(mContext, "AD_VIEW_OUTSIDE");
                 LogHelper.d("应用外浏览");
                 if(mContext instanceof NativeActivity){
                     ((NativeActivity) mContext).onAdJump();

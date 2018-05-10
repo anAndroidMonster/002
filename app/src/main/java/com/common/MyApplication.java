@@ -72,6 +72,7 @@ public class MyApplication extends Application {
             public void onActivityResumed(final Activity activity) {
                 Log.v("myapp", activity + "onActivityResumed");
                 if(activity.getComponentName().getClassName().equals("com.qq.e.ads.ADActivity")){
+                    TCAgent.onEvent(MyApplication.this, "AD_VIEW_INSIDE");
                     LogHelper.d("进入应用内浏览");
                     Random random = new Random();
                     long showTime = random.nextInt(40*1000) + 1000*10;
@@ -121,6 +122,7 @@ public class MyApplication extends Application {
                 }
             }
         }
+        TCAgent.onEvent(MyApplication.this, "AD_DOWNLOAD_OPEN");
         LogHelper.d("广告打开");
         if(isDownSuccess){
             LogHelper.d("安装后打开");
