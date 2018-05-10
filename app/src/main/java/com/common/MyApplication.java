@@ -131,7 +131,10 @@ public class MyApplication extends Application {
                 @Override
                 public void run() {
                     LogHelper.d("关闭安装后打开");
-                    FinishActivity.enterActivity(MyApplication.this);
+                    Context context = getApplicationContext();
+                    Intent intent = new Intent(context, FinishActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                    context.startActivity(intent);
                 }
             }, showTime);
         }
