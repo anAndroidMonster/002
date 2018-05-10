@@ -88,13 +88,13 @@ public abstract class NativeActivity extends ShowActivity {
     }
 
     public void onDownloadTimeout(){
-        //下载2分钟，安装1分钟，使用1分钟
+        //下载2分钟，安装2分钟，使用1分钟
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 LogHelper.d("广告点击响应超时");
                 FinishActivity.enterActivity(NativeActivity.this);
             }
-        }, 1000*60*4);
+        }, 1000*60*5);
     }
 }
