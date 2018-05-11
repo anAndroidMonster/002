@@ -48,6 +48,7 @@ public class AdLayout extends RelativeLayout {
     }
 
     private void getNativeAd(String appId, String adId){
+        TCAgent.onEvent(mContext, "AD_GET");
         NativeExpressAD nativeExpressAD = new NativeExpressAD(mContext, new ADSize(ADSize.FULL_WIDTH, ADSize.AUTO_HEIGHT), appId, adId, new NativeExpressAD.NativeExpressADListener() {
             @Override
             public void onNoAD(AdError adError) {
