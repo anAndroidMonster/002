@@ -26,6 +26,7 @@ public abstract class ShowActivity extends Activity {
     //view
     private ImageView mIvShow;
     protected RelativeLayout mLayContainer;
+    protected View mVStatus;
     //data
     private long mClickTime;
 
@@ -44,6 +45,7 @@ public abstract class ShowActivity extends Activity {
     private void initView(){
         mIvShow = (ImageView) findViewById(R.id.iv_show);
         mLayContainer = (RelativeLayout) findViewById(R.id.lay_container);
+        mVStatus = findViewById(R.id.v_status);
     }
 
     private void initEvent(){

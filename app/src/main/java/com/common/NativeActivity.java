@@ -26,6 +26,11 @@ public abstract class NativeActivity extends ShowActivity {
         super.onCreate(savedInstanceState);
         initTouch();
         getNative();
+        if(getNativeId().equals(ClickHelper.getInstance().getEnableId())){
+            mVStatus.setBackgroundResource(R.color.app_black);
+        }else{
+            mVStatus.setBackgroundResource(R.color.app_white);
+        }
     }
 
     private void initTouch(){
