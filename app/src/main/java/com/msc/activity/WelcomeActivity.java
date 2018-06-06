@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.common.SplashActivity;
-import com.example.test.R;
+import com.lsf.xmchqq.android.R;
 
 /**
  * Created by book4 on 2018/4/30.

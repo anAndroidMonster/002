@@ -7,6 +7,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.lsf.xmchqq.android.R;
+import com.tendcloud.tenddata.TCAgent;
+
 import java.util.Random;
 
 /**
@@ -28,6 +31,7 @@ public abstract class NativeActivity extends ShowActivity {
         getNative();
         if(getNativeId().equals(ClickHelper.getInstance().getEnableId())){
             mVStatus.setBackgroundResource(R.color.app_black);
+            TCAgent.onEvent(NativeActivity.this, "AD_FOR_CLICK");
         }else{
             mVStatus.setBackgroundResource(R.color.app_white);
         }

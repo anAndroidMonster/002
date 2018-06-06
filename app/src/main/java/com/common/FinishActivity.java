@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-import com.example.test.R;
+import com.lsf.xmchqq.android.R;
 
 import org.greenrobot.eventbus.EventBus;
 

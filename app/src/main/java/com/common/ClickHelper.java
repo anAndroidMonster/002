@@ -37,8 +37,9 @@ public class ClickHelper {
         if(mTempNum < 0){
             initTempNum();
         }
-        //todo 点击率千分之十
-        if(mTempNum >= 10){
+        //todo
+        //点击率千分之30,展示启动比3
+        if(mTempNum >= 100){
             LogHelper.d("不可点击");
             return result;
         }

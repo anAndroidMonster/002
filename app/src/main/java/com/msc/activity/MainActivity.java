@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.common.Constant;
 import com.common.NativeActivity;
 import com.common.ShowActivity;
-import com.example.test.R;
+import com.lsf.xmchqq.android.R;
 
 /**
  * Created by book4 on 2018/5/2.
