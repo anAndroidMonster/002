@@ -17,19 +17,11 @@
     <uses-permission android:name="android.permission.GET_TASKS"  />
 
     <application
-        android:name="com.common.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="吃货圈圈"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.msc.activity.WelcomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <service android:name="com.qq.e.comm.DownloadService" android:exported="false" />
         <activity android:name="com.qq.e.ads.ADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
@@ -40,20 +32,17 @@
                 <action android:name="com.talkingdata.sdk.TDAntiCheatingService" />
             </intent-filter>
         </service>
+        
 
-        <activity android:name="com.common.FinishActivity" android:screenOrientation="portrait" android:launchMode="singleTask" android:exported="true"/>
+        <activity android:name="com.android.WelcomeActivity" android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name="com.msc.activity.MainActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.PaiDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.PaiUpLoad" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.PaiuploadChooseType" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.RecipeListCommentActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.LoginActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.RecipeDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.UploadRecipeCreate" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.RecommentUserListActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-        <activity android:name="com.msc.activity.SearchActivity" android:screenOrientation="portrait" android:launchMode="singleTask"/>
-
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name="com.android.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.android.ListInfoActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
